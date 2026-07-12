@@ -1,0 +1,19 @@
+{
+    "name": "mdaktarujjaman/craftblocks",
+    "description": "Modern Gutenberg Blocks Library for WordPress",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Md Aktarujjaman",
+            "email": "mdaktarujjaman264@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "CraftBlocks\\": "includes/"
+        }
+    }
+}

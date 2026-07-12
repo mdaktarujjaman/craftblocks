@@ -1,0 +1,48 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "craftblocks/hero-banner",
+    "title": "Hero Banner",
+    "category": "craftblocks",
+    "icon": "cover-image",
+    "description": "A full-width hero section with heading, subheading, button, and background image.",
+    "keywords": [ "hero", "banner", "cover" ],
+    "textdomain": "craftblocks",
+    "attributes": {
+        "heading": {
+            "type": "string",
+            "default": "Your Powerful Heading Here"
+        },
+        "subHeading": {
+            "type": "string",
+            "default": "A supporting subheading goes here."
+        },
+        "buttonText": {
+            "type": "string",
+            "default": "Learn More"
+        },
+        "buttonUrl": {
+            "type": "string",
+            "default": "#"
+        },
+        "backgroundImageUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "overlayOpacity": {
+            "type": "number",
+            "default": 50
+        },
+        "contentAlignment": {
+            "type": "string",
+            "default": "center"
+        }
+    },
+    "supports": {
+        "html": false,
+        "align": [ "wide", "full" ]
+    },
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css"
+}
