@@ -43,6 +43,16 @@ export default function Edit( { attributes, setAttributes } ) {
 		blockMargin,
 		blockBorderRadius,
 		blockShadow,
+		buttonFontFamily,
+		buttonFontSize,
+		buttonFontWeight,
+		buttonLineHeight,
+		buttonTextColor,
+		buttonBackgroundColor,
+		buttonHoverColor,
+		buttonPadding,
+		buttonBorderRadius,
+		buttonShadow,
 	} = attributes;
 
 	const [ isLinkPickerOpen, setIsLinkPickerOpen ] = useState( false );
@@ -118,6 +128,46 @@ export default function Edit( { attributes, setAttributes } ) {
 					onBorderRadiusChange={ ( value ) => setAttributes( { blockBorderRadius: value } ) }
 					onShadowChange={ ( value ) => setAttributes( { blockShadow: value } ) }
 				/>
+				<TypographyControls
+					title="Button Typography"
+					fontFamily={ buttonFontFamily }
+					fontSize={ buttonFontSize }
+					fontWeight={ buttonFontWeight }
+					lineHeight={ buttonLineHeight }
+					onFontFamilyChange={ ( value ) => setAttributes( { buttonFontFamily: value } ) }
+					onFontSizeChange={ ( value ) => setAttributes( { buttonFontSize: value } ) }
+					onFontWeightChange={ ( value ) => setAttributes( { buttonFontWeight: value } ) }
+					onLineHeightChange={ ( value ) => setAttributes( { buttonLineHeight: value } ) }
+				/>
+
+				<ColorControls
+					title="Button Text Color"
+					textColor={ buttonTextColor }
+					onTextColorChange={ ( value ) => setAttributes( { buttonTextColor: value } ) }
+					showHover={ false }
+				/>
+
+				<ColorControls
+					title="Button Background"
+					textColor={ buttonBackgroundColor }
+					textColorLabel="Background Color"
+					onTextColorChange={ ( value ) => setAttributes( { buttonBackgroundColor: value } ) }
+					hoverColor={ buttonHoverColor }
+					hoverColorLabel="Hover Background Color"
+					onHoverColorChange={ ( value ) => setAttributes( { buttonHoverColor: value } ) }
+				/>
+
+				<SpacingControls
+					title="Button Spacing"
+					padding={ buttonPadding }
+					margin={ 0 }
+					borderRadius={ buttonBorderRadius }
+					shadow={ buttonShadow }
+					onPaddingChange={ ( value ) => setAttributes( { buttonPadding: value } ) }
+					onMarginChange={ () => {} }
+					onBorderRadiusChange={ ( value ) => setAttributes( { buttonBorderRadius: value } ) }
+					onShadowChange={ ( value ) => setAttributes( { buttonShadow: value } ) }
+				/>
 			</InspectorControls>
 
 			<div { ...blockProps }>
@@ -155,6 +205,18 @@ export default function Edit( { attributes, setAttributes } ) {
 							variant="secondary"
 							className="craftblocks-hero-button"
 							onClick={ () => setIsLinkPickerOpen( true ) }
+							style={ {
+								fontFamily: buttonFontFamily,
+								fontSize: buttonFontSize + 'px',
+								fontWeight: buttonFontWeight,
+								lineHeight: buttonLineHeight,
+								color: buttonTextColor,
+								backgroundColor: buttonBackgroundColor,
+								padding: buttonPadding + 'px ' + ( buttonPadding * 2 ) + 'px',
+								borderRadius: buttonBorderRadius + 'px',
+								boxShadow: buttonShadow !== 'none' ? buttonShadow : undefined,
+								'--craftblocks-btn-hover-bg': buttonHoverColor,
+							} }
 						>
 							<RichText
 								tagName="span"

@@ -21,6 +21,16 @@ export default function save( { attributes } ) {
 		blockMargin,
 		blockBorderRadius,
 		blockShadow,
+		buttonFontFamily,
+		buttonFontSize,
+		buttonFontWeight,
+		buttonLineHeight,
+		buttonTextColor,
+		buttonBackgroundColor,
+		buttonHoverColor,
+		buttonPadding,
+		buttonBorderRadius,
+		buttonShadow,
 	} = attributes;
 
 	const blockProps = useBlockProps.save( {
@@ -62,7 +72,21 @@ export default function save( { attributes } ) {
 						} }
 				/>
 
-				<a href={ buttonUrl } className="craftblocks-hero-button">
+				<a href={ buttonUrl }
+					className="craftblocks-hero-button"
+					style={ {
+						fontFamily: buttonFontFamily,
+						fontSize: buttonFontSize + 'px',
+						fontWeight: buttonFontWeight,
+						lineHeight: buttonLineHeight,
+						color: buttonTextColor,
+						backgroundColor: buttonBackgroundColor,
+						padding: buttonPadding + 'px ' + ( buttonPadding * 2 ) + 'px',
+						borderRadius: buttonBorderRadius + 'px',
+						boxShadow: buttonShadow !== 'none' ? buttonShadow : undefined,
+						'--craftblocks-btn-hover-bg': buttonHoverColor,
+					} }
+				>
 					<RichText.Content tagName="span" value={ buttonText } />
 				</a>
 			</div>

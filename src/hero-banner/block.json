@@ -72,6 +72,46 @@
         "blockShadow": {
             "type": "string",
             "default": "none"
+        },
+        "buttonFontFamily": {
+            "type": "string",
+            "default": "inherit"
+        },
+        "buttonFontSize": {
+            "type": "number",
+            "default": 16
+        },
+        "buttonFontWeight": {
+            "type": "string",
+            "default": "600"
+        },
+        "buttonLineHeight": {
+            "type": "number",
+            "default": 1
+        },
+        "buttonTextColor": {
+            "type": "string",
+            "default": "#1e1e1e"
+        },
+        "buttonBackgroundColor": {
+            "type": "string",
+            "default": "#ffffff"
+        },
+        "buttonHoverColor": {
+            "type": "string",
+            "default": "#f0f0f0"
+        },
+        "buttonPadding": {
+            "type": "number",
+            "default": 14
+        },
+        "buttonBorderRadius": {
+            "type": "number",
+            "default": 4
+        },
+        "buttonShadow": {
+            "type": "string",
+            "default": "none"
         }
     },
     "supports": {

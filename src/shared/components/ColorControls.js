@@ -7,12 +7,14 @@ import { PanelBody, ColorPicker } from '@wordpress/components';
  * Reusable Color panel for the block Inspector sidebar.
  *
  * @param {Object}   props
- * @param {string}   props.textColor         Current text color (hex).
- * @param {string}   props.hoverColor        Current hover color (hex).
- * @param {Function} props.onTextColorChange  Callback when text color changes.
- * @param {Function} props.onHoverColorChange Callback when hover color changes.
- * @param {string}   [props.title]           Panel title. Defaults to "Color".
- * @param {boolean}  [props.showHover]       Whether to show the hover color picker. Defaults to true.
+ * @param {string}   props.textColor          Current primary color (hex).
+ * @param {string}   props.hoverColor         Current secondary/hover color (hex).
+ * @param {Function} props.onTextColorChange   Callback when primary color changes.
+ * @param {Function} props.onHoverColorChange  Callback when hover color changes.
+ * @param {string}   [props.title]            Panel title. Defaults to "Color".
+ * @param {boolean}  [props.showHover]        Whether to show the hover color picker. Defaults to true.
+ * @param {string}   [props.textColorLabel]   Label for the primary color picker. Defaults to "Text Color".
+ * @param {string}   [props.hoverColorLabel]  Label for the hover color picker. Defaults to "Hover Color".
  * @return {JSX.Element} Color controls panel.
  */
 export default function ColorControls( {
@@ -22,10 +24,12 @@ export default function ColorControls( {
 	onHoverColorChange,
 	title = 'Color',
 	showHover = true,
+	textColorLabel = 'Text Color',
+	hoverColorLabel = 'Hover Color',
 } ) {
 	return (
 		<PanelBody title={ title } initialOpen={ false }>
-			<p className="craftblocks-color-label">Text Color</p>
+			<p className="craftblocks-color-label">{ textColorLabel }</p>
 			<ColorPicker
 				color={ textColor }
 				onChange={ onTextColorChange }
@@ -35,7 +39,7 @@ export default function ColorControls( {
 
 			{ showHover && (
 				<>
-					<p className="craftblocks-color-label">Hover Color</p>
+					<p className="craftblocks-color-label">{ hoverColorLabel }</p>
 					<ColorPicker
 						color={ hoverColor }
 						onChange={ onHoverColorChange }
