@@ -1,0 +1,55 @@
+.wp-block-craftblocks-faq-accordion {
+	max-width: 800px;
+	margin: 0 auto;
+
+	.craftblocks-faq-item {
+		border-bottom: 1px solid #e0e0e0;
+
+		&:first-child {
+			border-top: 1px solid #e0e0e0;
+		}
+	}
+
+	.craftblocks-faq-question {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 20px 8px;
+		font-size: 17px;
+		font-weight: 600;
+		color: #1e1e1e;
+		cursor: pointer;
+		list-style: none;
+
+		// Hide the browser's default triangle marker.
+		&::-webkit-details-marker {
+			display: none;
+		}
+
+		// Custom plus/minus icon using CSS, positioned at the end.
+		&::after {
+			content: '+';
+			font-size: 24px;
+			font-weight: 400;
+			color: #757575;
+			margin-left: 16px;
+			transition: transform 0.2s ease;
+		}
+	}
+
+	.craftblocks-faq-answer {
+		padding: 0 8px 20px 8px;
+		font-size: 15px;
+		line-height: 1.6;
+		color: #3c3c3c;
+
+		p {
+			margin: 0;
+		}
+	}
+
+	// When <details> is open, rotate the plus icon into a "x"/minus look.
+	details[open] .craftblocks-faq-question::after {
+		content: '−';
+	}
+}

@@ -1,0 +1,36 @@
+.wp-block-craftblocks-faq-accordion {
+	.craftblocks-faq-item {
+		border-bottom: 1px solid #e0e0e0;
+		padding: 8px 0;
+
+		&:first-child {
+			border-top: 1px solid #e0e0e0;
+		}
+	}
+
+	.craftblocks-faq-question-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+	}
+
+	.craftblocks-faq-question {
+		flex: 1;
+		font-size: 17px;
+		font-weight: 600;
+	}
+
+	.craftblocks-faq-controls {
+		display: flex;
+		gap: 4px;
+		flex-shrink: 0;
+	}
+
+	.craftblocks-faq-answer {
+		margin-top: 8px;
+		padding-left: 8px;
+		font-size: 15px;
+		color: #3c3c3c;
+	}
+}
