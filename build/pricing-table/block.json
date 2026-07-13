@@ -1,0 +1,67 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "craftblocks/pricing-table",
+  "title": "Pricing Table",
+  "category": "craftblocks",
+  "icon": "money-alt",
+  "description": "A pricing card with price, currency, feature list, button, and featured badge.",
+  "keywords": [
+    "pricing",
+    "price",
+    "plan",
+    "table"
+  ],
+  "textdomain": "craftblocks",
+  "attributes": {
+    "planName": {
+      "type": "string",
+      "default": "Basic Plan"
+    },
+    "currency": {
+      "type": "string",
+      "default": "$"
+    },
+    "price": {
+      "type": "string",
+      "default": "29"
+    },
+    "pricePeriod": {
+      "type": "string",
+      "default": "/month"
+    },
+    "features": {
+      "type": "array",
+      "default": [
+        "Feature one",
+        "Feature two",
+        "Feature three"
+      ]
+    },
+    "buttonText": {
+      "type": "string",
+      "default": "Choose Plan"
+    },
+    "buttonUrl": {
+      "type": "string",
+      "default": "#"
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false
+    },
+    "featuredBadgeText": {
+      "type": "string",
+      "default": "Most Popular"
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": [
+      "wide"
+    ]
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
