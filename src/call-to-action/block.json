@@ -1,0 +1,52 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "craftblocks/call-to-action",
+    "title": "Call To Action",
+    "category": "craftblocks",
+    "icon": "megaphone",
+    "description": "A prominent section with title, description, and button to drive user action.",
+    "keywords": [ "cta", "call to action", "banner" ],
+    "textdomain": "craftblocks",
+    "attributes": {
+        "title": {
+            "type": "string",
+            "default": "Ready to Get Started?"
+        },
+        "description": {
+            "type": "string",
+            "default": "Join thousands of satisfied customers today."
+        },
+        "buttonText": {
+            "type": "string",
+            "default": "Get Started"
+        },
+        "buttonUrl": {
+            "type": "string",
+            "default": "#"
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": "#2271b1"
+        },
+        "useGradient": {
+            "type": "boolean",
+            "default": false
+        },
+        "gradientColorStart": {
+            "type": "string",
+            "default": "#2271b1"
+        },
+        "gradientColorEnd": {
+            "type": "string",
+            "default": "#72aee6"
+        }
+    },
+    "supports": {
+        "html": false,
+        "align": [ "wide", "full" ]
+    },
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css"
+}

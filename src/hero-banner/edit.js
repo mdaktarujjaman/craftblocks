@@ -1,6 +1,12 @@
 /**
  * WordPress dependencies.
  */
+
+import TypographyControls from '../shared/components/TypographyControls';
+import ColorControls from '../shared/components/ColorControls';
+import SpacingControls from '../shared/components/SpacingControls';
+
+// WordPress dependencies.
 import {
 	useBlockProps,
 	RichText,
@@ -28,15 +34,28 @@ export default function Edit( { attributes, setAttributes } ) {
 		backgroundImageUrl,
 		overlayOpacity,
 		contentAlignment,
+		headingFontFamily,
+		headingFontSize,
+		headingFontWeight,
+		headingLineHeight,
+		headingTextColor,
+		blockPadding,
+		blockMargin,
+		blockBorderRadius,
+		blockShadow,
 	} = attributes;
 
 	const [ isLinkPickerOpen, setIsLinkPickerOpen ] = useState( false );
 
 	const blockProps = useBlockProps( {
 		className: `craftblocks-align-${ contentAlignment }`,
-		style: backgroundImageUrl
-			? { backgroundImage: `url(${ backgroundImageUrl })` }
-			: undefined,
+		style: {
+			backgroundImage: backgroundImageUrl ? `url(${ backgroundImageUrl })` : undefined,
+			padding: blockPadding + 'px',
+			margin: blockMargin + 'px',
+			borderRadius: blockBorderRadius + 'px',
+			boxShadow: blockShadow !== 'none' ? blockShadow : undefined,
+		},
 	} );
 
 	const onSelectImage = ( media ) => {
@@ -72,6 +91,33 @@ export default function Edit( { attributes, setAttributes } ) {
 						<ToggleGroupControlOption value="right" label="Right" />
 					</ToggleGroupControl>
 				</PanelBody>
+				<TypographyControls
+					title="Heading Typography"
+					fontFamily={ headingFontFamily }
+					fontSize={ headingFontSize }
+					fontWeight={ headingFontWeight }
+					lineHeight={ headingLineHeight }
+					onFontFamilyChange={ ( value ) => setAttributes( { headingFontFamily: value } ) }
+					onFontSizeChange={ ( value ) => setAttributes( { headingFontSize: value } ) }
+					onFontWeightChange={ ( value ) => setAttributes( { headingFontWeight: value } ) }
+					onLineHeightChange={ ( value ) => setAttributes( { headingLineHeight: value } ) }
+				/>
+				<ColorControls
+					title="Heading Color"
+					textColor={ headingTextColor }
+					onTextColorChange={ ( value ) => setAttributes( { headingTextColor: value } ) }
+					showHover={ false }
+				/>
+				<SpacingControls
+					padding={ blockPadding }
+					margin={ blockMargin }
+					borderRadius={ blockBorderRadius }
+					shadow={ blockShadow }
+					onPaddingChange={ ( value ) => setAttributes( { blockPadding: value } ) }
+					onMarginChange={ ( value ) => setAttributes( { blockMargin: value } ) }
+					onBorderRadiusChange={ ( value ) => setAttributes( { blockBorderRadius: value } ) }
+					onShadowChange={ ( value ) => setAttributes( { blockShadow: value } ) }
+				/>
 			</InspectorControls>
 
 			<div { ...blockProps }>
@@ -87,6 +133,13 @@ export default function Edit( { attributes, setAttributes } ) {
 						value={ heading }
 						onChange={ ( newHeading ) => setAttributes( { heading: newHeading } ) }
 						placeholder="Enter heading..."
+						style={ {
+							fontFamily: headingFontFamily,
+							fontSize: headingFontSize + 'px',
+							fontWeight: headingFontWeight,
+							lineHeight: headingLineHeight,
+							color: headingTextColor,
+						} }
 					/>
 
 					<RichText

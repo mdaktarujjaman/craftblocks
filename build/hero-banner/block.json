@@ -40,6 +40,42 @@
     "contentAlignment": {
       "type": "string",
       "default": "center"
+    },
+    "headingFontFamily": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "headingFontSize": {
+      "type": "number",
+      "default": 48
+    },
+    "headingFontWeight": {
+      "type": "string",
+      "default": "700"
+    },
+    "headingLineHeight": {
+      "type": "number",
+      "default": 1.2
+    },
+    "headingTextColor": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "blockPadding": {
+      "type": "number",
+      "default": 80
+    },
+    "blockMargin": {
+      "type": "number",
+      "default": 0
+    },
+    "blockBorderRadius": {
+      "type": "number",
+      "default": 0
+    },
+    "blockShadow": {
+      "type": "string",
+      "default": "none"
     }
   },
   "supports": {

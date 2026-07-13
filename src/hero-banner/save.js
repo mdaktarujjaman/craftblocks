@@ -12,13 +12,26 @@ export default function save( { attributes } ) {
 		backgroundImageUrl,
 		overlayOpacity,
 		contentAlignment,
+		headingFontFamily,
+		headingFontSize,
+		headingFontWeight,
+		headingLineHeight,
+		headingTextColor,
+		blockPadding,
+		blockMargin,
+		blockBorderRadius,
+		blockShadow,
 	} = attributes;
 
 	const blockProps = useBlockProps.save( {
 		className: `craftblocks-align-${ contentAlignment }`,
-		style: backgroundImageUrl
-			? { backgroundImage: `url(${ backgroundImageUrl })` }
-			: undefined,
+		style: {
+			backgroundImage: backgroundImageUrl ? `url(${ backgroundImageUrl })` : undefined,
+			padding: blockPadding + 'px',
+			margin: blockMargin + 'px',
+			borderRadius: blockBorderRadius + 'px',
+			boxShadow: blockShadow !== 'none' ? blockShadow : undefined,
+		},
 	} );
 
 	return (
@@ -36,9 +49,17 @@ export default function save( { attributes } ) {
 				/>
 
 				<RichText.Content
-					tagName="p"
-					className="craftblocks-hero-subheading"
-					value={ subHeading }
+						tagName="h1"
+						className="craftblocks-hero-heading"
+						value={ heading }
+						style={ {
+							fontFamily: headingFontFamily,
+							fontSize: headingFontSize + 'px',
+							fontWeight: headingFontWeight,
+							lineHeight: headingLineHeight,
+							color: headingTextColor,
+
+						} }
 				/>
 
 				<a href={ buttonUrl } className="craftblocks-hero-button">
