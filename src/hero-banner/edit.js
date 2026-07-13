@@ -1,21 +1,147 @@
 /**
  * WordPress dependencies.
  */
-import { useBlockProps, RichText } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	RichText,
+	MediaUpload,
+	MediaUploadCheck,
+	InspectorControls,
+	__experimentalLinkControl as LinkControl,
+} from '@wordpress/block-editor';
+import {
+	Button,
+	Popover,
+	PanelBody,
+	RangeControl,
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
+} from '@wordpress/components';
+import { useState } from '@wordpress/element';
 
 export default function Edit( { attributes, setAttributes } ) {
-	const { heading } = attributes;
+	const {
+		heading,
+		subHeading,
+		buttonText,
+		buttonUrl,
+		backgroundImageUrl,
+		overlayOpacity,
+		contentAlignment,
+	} = attributes;
 
-	const blockProps = useBlockProps();
+	const [ isLinkPickerOpen, setIsLinkPickerOpen ] = useState( false );
+
+	const blockProps = useBlockProps( {
+		className: `craftblocks-align-${ contentAlignment }`,
+		style: backgroundImageUrl
+			? { backgroundImage: `url(${ backgroundImageUrl })` }
+			: undefined,
+	} );
+
+	const onSelectImage = ( media ) => {
+		setAttributes( { backgroundImageUrl: media.url } );
+	};
+
+	const onRemoveImage = () => {
+		setAttributes( { backgroundImageUrl: '' } );
+	};
 
 	return (
-		<div { ...blockProps }>
-			<RichText
-				tagName="h1"
-				value={ heading }
-				onChange={ ( newHeading ) => setAttributes( { heading: newHeading } ) }
-				placeholder="Enter heading..."
-			/>
-		</div>
+		<>
+			<InspectorControls>
+				<PanelBody title="Background Settings" initialOpen={ true }>
+					<RangeControl
+						label="Overlay Opacity"
+						value={ overlayOpacity }
+						onChange={ ( newValue ) => setAttributes( { overlayOpacity: newValue } ) }
+						min={ 0 }
+						max={ 100 }
+					/>
+				</PanelBody>
+
+				<PanelBody title="Layout Settings" initialOpen={ true }>
+					<ToggleGroupControl
+						label="Content Alignment"
+						value={ contentAlignment }
+						onChange={ ( newValue ) => setAttributes( { contentAlignment: newValue } ) }
+						isBlock
+					>
+						<ToggleGroupControlOption value="left" label="Left" />
+						<ToggleGroupControlOption value="center" label="Center" />
+						<ToggleGroupControlOption value="right" label="Right" />
+					</ToggleGroupControl>
+				</PanelBody>
+			</InspectorControls>
+
+			<div { ...blockProps }>
+				<div
+					className="craftblocks-hero-overlay"
+					style={ { opacity: overlayOpacity / 100 } }
+				/>
+
+				<div className="craftblocks-hero-content">
+					<RichText
+						tagName="h1"
+						className="craftblocks-hero-heading"
+						value={ heading }
+						onChange={ ( newHeading ) => setAttributes( { heading: newHeading } ) }
+						placeholder="Enter heading..."
+					/>
+
+					<RichText
+						tagName="p"
+						className="craftblocks-hero-subheading"
+						value={ subHeading }
+						onChange={ ( newSubHeading ) => setAttributes( { subHeading: newSubHeading } ) }
+						placeholder="Enter subheading..."
+					/>
+
+					<div className="craftblocks-hero-button-wrapper">
+						<Button
+							variant="secondary"
+							className="craftblocks-hero-button"
+							onClick={ () => setIsLinkPickerOpen( true ) }
+						>
+							<RichText
+								tagName="span"
+								value={ buttonText }
+								onChange={ ( newButtonText ) => setAttributes( { buttonText: newButtonText } ) }
+								placeholder="Button text..."
+							/>
+						</Button>
+
+						{ isLinkPickerOpen && (
+							<Popover onClose={ () => setIsLinkPickerOpen( false ) }>
+								<LinkControl
+									value={ { url: buttonUrl } }
+									onChange={ ( newLink ) => setAttributes( { buttonUrl: newLink.url } ) }
+								/>
+							</Popover>
+						) }
+					</div>
+
+					<MediaUploadCheck>
+						<MediaUpload
+							onSelect={ onSelectImage }
+							allowedTypes={ [ 'image' ] }
+							value={ backgroundImageUrl }
+							render={ ( { open } ) => (
+								<div className="craftblocks-hero-media-controls">
+									<Button variant="secondary" onClick={ open }>
+										{ backgroundImageUrl ? 'Change Background' : 'Set Background Image' }
+									</Button>
+									{ backgroundImageUrl && (
+										<Button variant="link" isDestructive onClick={ onRemoveImage }>
+											Remove
+										</Button>
+									) }
+								</div>
+							) }
+						/>
+					</MediaUploadCheck>
+				</div>
+			</div>
+		</>
 	);
 }
