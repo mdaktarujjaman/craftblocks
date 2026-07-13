@@ -1,0 +1,53 @@
+.wp-block-craftblocks-team-members {
+	.craftblocks-team-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: 24px;
+	}
+
+	.craftblocks-team-card {
+		position: relative;
+		border: 1px solid #e0e0e0;
+		border-radius: 8px;
+		padding: 20px;
+		text-align: center;
+	}
+
+	.craftblocks-team-image {
+		width: 120px;
+		height: 120px;
+		margin: 0 auto 12px auto;
+		border-radius: 50%;
+		background-size: cover;
+		background-position: center;
+		background-color: #f0f0f0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+	}
+
+	.craftblocks-team-image-placeholder {
+		color: #757575;
+		font-size: 12px;
+	}
+
+	.craftblocks-team-remove-btn {
+		position: absolute;
+		top: 8px;
+		right: 8px;
+		z-index: 2;
+	}
+
+	.craftblocks-team-social-editor {
+		margin-top: 16px;
+		text-align: left;
+	}
+
+	.craftblocks-team-social-row {
+		display: flex;
+		gap: 6px;
+		align-items: center;
+		margin-bottom: 8px;
+	}
+}

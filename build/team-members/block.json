@@ -1,0 +1,49 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "craftblocks/team-members",
+  "title": "Team Members",
+  "category": "craftblocks",
+  "icon": "groups",
+  "description": "A grid of team member cards with photo, name, position, bio, and social links.",
+  "keywords": [
+    "team",
+    "members",
+    "staff",
+    "people"
+  ],
+  "textdomain": "craftblocks",
+  "attributes": {
+    "members": {
+      "type": "array",
+      "default": [
+        {
+          "imageUrl": "",
+          "name": "John Doe",
+          "position": "Founder & CEO",
+          "bio": "Passionate about building great products.",
+          "socialLinks": [
+            {
+              "platform": "twitter",
+              "url": "#"
+            },
+            {
+              "platform": "linkedin",
+              "url": "#"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
